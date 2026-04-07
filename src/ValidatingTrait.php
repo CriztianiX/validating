@@ -40,7 +40,9 @@ trait ValidatingTrait
      */
     public static function bootValidatingTrait()
     {
-        static::observe(new ValidatingObserver);
+        static::whenBooted(function () {
+            static::observe(ValidatingObserver::class);
+        });
     }
 
     /**
